@@ -1,8 +1,16 @@
 import socket
 import threading
 from datetime import datetime
+from db import save_message, get_chat_history
 
 username = input("Enter your name: ")
+partner = input("Who do you want to chat with? ")
+
+# نمایش تاریخچه چت قبلی
+print(f"\n--- Chat history with {partner} ---")
+for sender, msg, time in get_chat_history(username, partner):
+    print(f"[{time}] {sender}: {msg}")
+print("-----------------------------------\n")
 
 def receive_messages(sock):
     while True:
@@ -10,7 +18,10 @@ def receive_messages(sock):
             message = sock.recv(1024).decode()
             if message:
                 print("\n" + message)
-                save_message(message)
+                # ذخیره پیام دریافتی
+                if ": " in message:
+                    sender, content = message.split(": ", 1)
+                    save_message(sender.strip("[] "), username, content.strip())
         except:
             print("[!] Connection lost.")
             sock.close()
@@ -23,13 +34,10 @@ def send_messages(sock):
         formatted = f"[{timestamp}] {username}: {message}"
         try:
             sock.send(formatted.encode())
+            save_message(username, partner, message)
         except:
             print("[!] Failed to send.")
             break
-
-def save_message(message):
-    with open("chat_history.txt", "a") as f:
-        f.write(message + "\n")
 
 def start_client(server_ip='127.0.0.1', port=12345):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
