@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>User List</h2>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Status</th>
+                        <th>Last Seen</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="users-list">
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>
+                            <span class="badge bg-{% if user.status == 'online' %}success{% else %}secondary{% endif %}">
+                                {{ user.status|title }}
+                            </span>
+                        </td>
+                        <td>{{ user.last_seen }}</td>
+                        <td>
+                            <a href="{{ url_for('chat', partner=user.username) }}" 
+                               class="btn btn-sm btn-primary">
+                                Chat
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Update user status in real-time
+    socket.on('user_status_change', function(data) {
+        const rows = document.querySelectorAll('#users-list tr');
+        rows.forEach(row => {
+            if (row.cells[0].textContent === data.username) {
+                // Update status badge
+                const badge = row.cells[1].querySelector('.badge');
+                badge.className = `badge bg-${data.status === 'online' ? 'success' : 'secondary'}`;
+                badge.textContent = data.status;
+                
+                // Update last seen
+                if (data.status === 'offline' && data.last_seen) {
+                    row.cells[2].textContent = data.last_seen;
+                } else if (data.status === 'online') {
+                    row.cells[2].textContent = 'Now';
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

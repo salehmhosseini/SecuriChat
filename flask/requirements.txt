@@ -1,0 +1,5 @@
+Flask==2.0.3
+Flask-SocketIO==5.3.4
+mysql-connector-python==8.0.33
+python-dotenv==1.0.0
+Werkzeug==2.0.3

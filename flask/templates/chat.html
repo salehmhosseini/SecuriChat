@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Chat with {{ partner }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Online Users
+            </div>
+            <div class="list-group list-group-flush">
+                {% for user in online_users %}
+                    <a href="{{ url_for('chat', partner=user) }}" 
+                       class="list-group-item list-group-item-action {% if user == partner %}active{% endif %}">
+                        {{ user }} <span class="badge bg-success rounded-pill float-end">Online</span>
+                    </a>
+                {% endfor %}
+                {% for user in offline_users %}
+                    <a href="{{ url_for('chat', partner=user) }}" 
+                       class="list-group-item list-group-item-action {% if user == partner %}active{% endif %}">
+                        {{ user }} <span class="badge bg-secondary rounded-pill float-end">Offline</span>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-primary text-white d-flex justify-content-between">
+                <span>Chat with {{ partner if partner else 'Select a user' }}</span>
+                {% if partner %}
+                    <span id="partner-status" class="badge bg-{% if partner in online_users %}success{% else %}secondary{% endif %}">
+                        {% if partner in online_users %}Online{% else %}Offline{% endif %}
+                    </span>
+                {% endif %}
+            </div>
+            <div class="card-body chat-container">
+                <div id="chat-messages" class="mb-3">
+                    {% for sender, message, timestamp in chat_history %}
+                        <div class="message {% if sender == session['username'] %}sent{% else %}received{% endif %}">
+                            <div class="message-header">
+                                <strong>{{ sender }}</strong>
+                                <small class="text-muted">{{ timestamp }}</small>
+                            </div>
+                            <div class="message-body">{{ message }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if partner %}
+                <div class="input-group">
+                    <input type="text" id="message-input" class="form-control" placeholder="Type your message...">
+                    <button id="send-button" class="btn btn-primary">Send</button>
+                </div>
+                {% else %}
+                <div class="alert alert-info">Please select a user to start chatting</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const username = "{{ session['username'] }}";
+    const partner = "{{ partner }}";
+</script>
+{% endblock %}
