@@ -1,0 +1,34 @@
+2025-06-08 21:04:54,509 - INFO - Connection - User: Server, Status: Started on 127.0.0.1:12345
+2025-06-08 21:05:11,129 - INFO - Connection - User: Server, Status: New connection from ('127.0.0.1', 43236)
+2025-06-08 21:05:11,160 - INFO - package: mysql.connector.plugins
+2025-06-08 21:05:11,160 - INFO - plugin_name: mysql_native_password
+2025-06-08 21:05:11,161 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-06-08 21:05:11,172 - INFO - Connection - User: saleh, Status: Updated last seen
+2025-06-08 21:05:11,173 - INFO - Connection - User: saleh, Status: Connected
+2025-06-08 21:05:11,382 - INFO - Connection - User: saleh, Status: Sent user list
+2025-06-08 21:05:13,683 - INFO - Connection - User: Server, Status: New connection from ('127.0.0.1', 50258)
+2025-06-08 21:05:13,748 - INFO - Connection - User: ali, Status: Updated last seen
+2025-06-08 21:05:13,749 - INFO - Connection - User: ali, Status: Connected
+2025-06-08 21:05:13,944 - INFO - Connection - User: ali, Status: Sent user list
+2025-06-08 21:05:15,615 - INFO - Connection - User: saleh, Status: Sent user list
+2025-06-08 21:05:19,004 - INFO - Connection - User: saleh, Status: Checked status for ali
+2025-06-08 21:05:22,634 - INFO - Connection - User: ali, Status: Checked status for saleh
+2025-06-08 21:05:24,776 - INFO - Checksum - Operation: verify, Data: salamm..., Checksum: 1133732242
+2025-06-08 21:05:24,776 - INFO - Message - Sender: saleh, Receiver: ali, Type: text, Encrypted: True, Content: salamm
+2025-06-08 21:05:24,821 - INFO - Message - Sender: saleh, Receiver: ali, Type: text, Encrypted: False, Content: gAAAAABoRcnc__XHlyh1_nG5rZ3HxZV-j0w7efebuA5Q_pRJl6LkziCjKedHdkwQDksn95eDlq5bfOIUNaa-1W7Y_YLK7bhmKg==
+2025-06-08 21:05:27,727 - INFO - Checksum - Operation: verify, Data: aleikkk..., Checksum: 3230415303
+2025-06-08 21:05:27,727 - INFO - Message - Sender: ali, Receiver: saleh, Type: text, Encrypted: True, Content: aleikkk
+2025-06-08 21:05:27,775 - INFO - Message - Sender: ali, Receiver: saleh, Type: text, Encrypted: False, Content: gAAAAABoRcnfuMPxqbS50PoQfDeCpr1KV1DuAwKyUKqhix1F9As9GEel-Rx-8pgGOeeeaad8bkuEa9HUL_119dq-UVumxxadmA==
+2025-06-08 21:05:33,416 - ERROR - Error - Type: Decryption, Message: Failed to decrypt received file
+2025-06-08 21:05:34,676 - INFO - Encryption - Operation: encrypt_file, Details: File: CNProject4032_v2.pdf
+2025-06-08 21:05:34,677 - INFO - Checksum - Operation: calculate, Data: b'%PDF-1.7\r\n%\xb5\xb5\xb5\xb5\r\n1 0 obj\r\n<</Type/Catalog/Pages 2 '..., Checksum: 1878091846
+2025-06-08 21:05:34,677 - INFO - File Transfer - Sender: saleh, Receiver: None, File: CNProject4032_v2.pdf, Size: 717240, Type: file
+2025-06-08 21:05:35,992 - INFO - Encryption - Operation: encrypt_file, Details: File: CNProject4032_v2.pdf
+2025-06-08 21:05:35,993 - INFO - Checksum - Operation: calculate, Data: b'%PDF-1.7\r\n%\xb5\xb5\xb5\xb5\r\n1 0 obj\r\n<</Type/Catalog/Pages 2 '..., Checksum: 1878091846
+2025-06-08 21:05:35,993 - INFO - File Transfer - Sender: saleh, Receiver: None, File: CNProject4032_v2.pdf, Size: 717240, Type: file
+2025-06-08 21:05:38,088 - INFO - Connection - User: ali, Status: Sent user list
+2025-06-08 21:05:39,016 - INFO - Connection - User: saleh, Status: Sent user list
+2025-06-08 21:05:43,238 - INFO - Connection - User: ali, Status: Updated last seen
+2025-06-08 21:05:43,239 - INFO - Connection - User: ali, Status: Disconnected
+2025-06-08 21:05:43,651 - INFO - Connection - User: saleh, Status: Updated last seen
+2025-06-08 21:05:43,652 - INFO - Connection - User: saleh, Status: Disconnected

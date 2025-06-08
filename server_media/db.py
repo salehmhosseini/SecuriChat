@@ -9,14 +9,14 @@ def get_db_connection():
         database="securichat"
     )
 
-def save_message(sender, receiver, content, message_type='text', file_path=None, file_size=None):
+def save_message(sender, receiver, content):
     conn = get_db_connection()
     cursor = conn.cursor()
     query = """
-        INSERT INTO messages (sender, receiver, content, message_type, file_path, file_size)
-        VALUES (%s, %s, %s, %s, %s, %s)
+        INSERT INTO messages (sender, receiver, content)
+        VALUES (%s, %s, %s)
     """
-    cursor.execute(query, (sender, receiver, content, message_type, file_path, file_size))
+    cursor.execute(query, (sender, receiver, content))
     conn.commit()
     conn.close()
 
@@ -24,7 +24,7 @@ def get_chat_history(user1, user2):
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
     query = """
-        SELECT sender, content, timestamp, message_type, file_path 
+        SELECT sender, content, timestamp 
         FROM messages 
         WHERE (sender = %s AND receiver = %s) OR (sender = %s AND receiver = %s)
         ORDER BY timestamp
@@ -33,6 +33,5 @@ def get_chat_history(user1, user2):
     results = cursor.fetchall()
     conn.close()
     
-    return [(row['sender'], row['content'], row['timestamp'].strftime("%Y-%m-%d %H:%M:%S"), 
-             row['message_type'], row['file_path']) 
+    return [(row['sender'], row['content'], row['timestamp'].strftime("%Y-%m-%d %H:%M:%S")) 
             for row in results]

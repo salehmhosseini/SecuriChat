@@ -1,0 +1,17 @@
+2025-06-08 21:05:13,681 - INFO - Connection - User: ali, Status: Connected
+2025-06-08 21:05:13,736 - INFO - Connection - User: ali, Status: Requested user list
+2025-06-08 21:05:13,945 - INFO - Connection - User: ali, Status: Received user list
+2025-06-08 21:05:22,634 - INFO - Connection - User: ali, Status: Checking status for saleh
+2025-06-08 21:05:22,703 - INFO - package: mysql.connector.plugins
+2025-06-08 21:05:22,703 - INFO - plugin_name: mysql_native_password
+2025-06-08 21:05:22,704 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-06-08 21:05:22,818 - INFO - Connection - User: ali, Status: Loaded chat history with saleh
+2025-06-08 21:05:24,777 - INFO - Encryption - Operation: decrypt_message, Details: Message length: 100
+2025-06-08 21:05:24,777 - INFO - Checksum - Operation: verify, Data: salamm..., Checksum: 1133732242
+2025-06-08 21:05:24,778 - INFO - Message - Sender: saleh, Receiver: ali, Type: text, Encrypted: True, Content: salamm
+2025-06-08 21:05:27,726 - INFO - Encryption - Operation: encrypt_message, Details: Message length: 7
+2025-06-08 21:05:27,726 - INFO - Checksum - Operation: calculate, Data: aleikkk..., Checksum: 3230415303
+2025-06-08 21:05:27,776 - INFO - Message - Sender: ali, Receiver: saleh, Type: text, Encrypted: True, Content: aleikkk
+2025-06-08 21:05:37,897 - INFO - Connection - User: ali, Status: Requested user list
+2025-06-08 21:05:38,096 - INFO - Connection - User: ali, Status: Received user list
+2025-06-08 21:05:42,464 - INFO - Connection - User: ali, Status: Disconnected
